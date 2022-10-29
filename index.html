@@ -1,30 +1,30 @@
 <html>
-	<head>
-		<title>Browser Fingerprinting</title>
-		<style>
-			.basic-fingerprinting-container {
-				width: 85%; 
-				margin: 0 auto;
-				border: 1px solid #000;
-				border-radius: 8px;
-				padding: 15px;
-			}
-		</style>
-	</head>
-	<body>
-		<div class="basic-fingerprinting-container">
-			<p><strong>User Agent: </strong><span id="userAgent"></span></p>
-			<span><strong>Available Fonts: </strong><span id="availableFonts"></span></p>
-			<span><strong>TimeZone: </strong><span id="timezone"></span></p>
-			<span><strong>Fingerprint hash: </strong><span id="fingerprint"></span></p>
-			<!-- Import js files with fingerprinting scripts -->
-			<script src="fonts.js"></script>
-			<script src="basicFingerprinting.js"></script>
-		</div>
-		<div class="canvas-fingerprinting-container">
-			<canvas>
-				<!-- Canvas for fingerprinting will be placed here -->
-			</canvas>
-		</div>
-	</body>
+  <head>
+    <title>Browser Fingerprinting</title>
+    <style>
+      .basic-fingerprinting-container {
+        width: 85%;
+        margin: 0 auto;
+        border: 1px solid #000;
+        border-radius: 8px;
+        padding: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="basic-fingerprinting-container">
+      <p><strong>User Agent: </strong><span id="userAgent"></span></p>
+      <p><strong>Available Fonts: </strong><span id="availableFonts"></span></p>
+      <p><strong>TimeZone: </strong><span id="timezone"></span></p>
+      <p><strong>Fingerprint hash: </strong><span id="fingerprint"></span></p>
+      <!-- Import js files with fingerprinting scripts -->
+      <script src="fonts.js"></script>
+      <script src="basicFingerprinting.js"></script>
+    </div>
+    <div class="canvas-fingerprinting-container">
+      <canvas>
+        <!-- Canvas for fingerprinting will be placed here -->
+      </canvas>
+    </div>
+  </body>
 </html>
