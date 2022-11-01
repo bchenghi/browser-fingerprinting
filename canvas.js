@@ -47,13 +47,25 @@ document.getElementById("canvas_hash").innerHTML = compute_hash(mySrc);
 
 //Display ref canvas
 let c = document.getElementById("refCanvas");
-ctx = c.getContext("2d");
+let refctx = c.getContext("2d");
 img = new Image();
 img.src = 'canvas.png';
 img.onload = function (e)
 {
-    ctx.drawImage(img, 0, 0);
+    refctx.drawImage(img, 0, 0);
 }
+// console.log(compute_hash((c.toDataURL())))
 //TODO: Show ref canvas hash
 
-// TODO: Show dif regions (binary black/white to make it obvious)
+let width = 200
+let height = 40
+
+canvasDiff = document.getElementById("difCanvas");
+const diffCtx = canvasDiff.getContext("2d");
+const img1 = ctx.getImageData(0, 0, width, height);
+const img2 = refctx.getImageData(0, 0, width, height);
+const diff = diffCtx.createImageData(width, height);
+
+pixelmatch(img1.data, img2.data, diff.data, width, height, {threshold: 0.1}); //TODO: Understand threshold better
+
+diffCtx.putImageData(diff, 0, 0);
