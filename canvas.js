@@ -31,7 +31,6 @@ ctx.fillRect(20,12,100,5);
 // hashing function
 let mySrc = canvas.toDataURL();
 
-// TODO: Add ref canvas, and show dif regions (binary black/white to make it obvious)
 function compute_hash(src) {
     let hash = 0;
 
@@ -46,6 +45,15 @@ function compute_hash(src) {
 
 document.getElementById("canvas_hash").innerHTML = compute_hash(mySrc);
 
+//Display ref canvas
+let c = document.getElementById("refCanvas");
+ctx = c.getContext("2d");
+img = new Image();
+img.src = 'canvas.png';
+img.onload = function (e)
+{
+    ctx.drawImage(img, 0, 0);
 }
+//TODO: Show ref canvas hash
 
 // TODO: Show dif regions (binary black/white to make it obvious)
