@@ -45,7 +45,7 @@ function compute_hash(src) {
 
 document.getElementById("canvas_hash").innerHTML = compute_hash(mySrc);
 
-//Display ref canvas
+//Display ref canvas #TODO: Fix bug
 let c = document.getElementById("refCanvas");
 let refctx = c.getContext("2d");
 img = new Image();
