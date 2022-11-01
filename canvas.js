@@ -2,6 +2,7 @@
 let canvas = document.getElementById("myCanvas"); //TODO: Create actual canvas element
 let ctx = canvas.getContext("2d");
 
+//Src canvas
 ctx.fillStyle = "rgb(255,0,255)";
 ctx.beginPath();
 ctx.rect(20, 20, 150, 100);
@@ -28,17 +29,23 @@ ctx.shadowColor="red";
 ctx.fillRect(20,12,100,5);
 
 // hashing function
-let src = canvas.toDataURL();
+let mySrc = canvas.toDataURL();
 
 // TODO: Add ref canvas, and show dif regions (binary black/white to make it obvious)
+function compute_hash(src) {
+    let hash = 0;
 
-let hash = 0;
-
-for (i = 0; i < src.length; i++) {
-	char = src.charCodeAt(i);
-	hash = ((hash<<5)-hash)+char;
-	hash = hash & hash;
+    for (i = 0; i < src.length; i++) {
+        char = src.charCodeAt(i);
+        hash = ((hash<<5)-hash)+char;
+        hash = hash & hash;
+    }
+    return hash
 }
 
-// TODO: Replace this below with an actual element
-document.getElementById("canvas_hash").innerHTML = hash;
+
+document.getElementById("canvas_hash").innerHTML = compute_hash(mySrc);
+
+}
+
+// TODO: Show dif regions (binary black/white to make it obvious)
