@@ -49,23 +49,10 @@ document.getElementById("canvas_hash").innerHTML = compute_hash(mySrc);
 let c = document.getElementById("refCanvas");
 let refctx = c.getContext("2d");
 img = new Image();
-img.src = 'canvas.png';
+img.src = refImgSrc
 img.onload = function (e)
 {
     refctx.drawImage(img, 0, 0);
 }
-// console.log(compute_hash((c.toDataURL())))
-//TODO: Show ref canvas hash
 
-let width = 200
-let height = 40
-
-canvasDiff = document.getElementById("difCanvas");
-const diffCtx = canvasDiff.getContext("2d");
-const img1 = ctx.getImageData(0, 0, width, height);
-const img2 = refctx.getImageData(0, 0, width, height);
-const diff = diffCtx.createImageData(width, height);
-
-pixelmatch(img1.data, img2.data, diff.data, width, height, {threshold: 0.1}); //TODO: Understand threshold better
-
-diffCtx.putImageData(diff, 0, 0);
+document.getElementById("ref_hash").innerHTML = compute_hash(refImgSrc);
