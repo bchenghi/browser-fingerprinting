@@ -1,7 +1,7 @@
 async function getFingerprintHash() {
   const txtEncoder = new TextEncoder("utf-8");
   const txtToEncode =
-    userAgent + ";" + availableFontsString + ";" + timeZone + ";" + canvasHash;
+    userAgent + ";" + availableFontsString + ";" + timeZone + ";" + canvasHash + ";" + webglVendor + ";" + webglRenderer;
   const buf = await crypto.subtle.digest(
     "SHA-256",
     txtEncoder.encode(txtToEncode)
@@ -18,6 +18,7 @@ async function fingerprintBrowser() {
   await getAvailableFonts();
   getTimeZone();
   getCanvasFingerprint();
+	getWebGLInfo();
   await getFingerprintHash();
 }
 

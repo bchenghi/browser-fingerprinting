@@ -1,4 +1,6 @@
 let canvasHash;
+let webglVendor;
+let webglRenderer;
 
 function getCanvasFingerprint() {
   //ATTRIBUTION: https://fingerprint.com/blog/canvas-fingerprinting/
@@ -58,4 +60,19 @@ function getCanvasFingerprint() {
   };
 
   document.getElementById("ref_hash").innerHTML = compute_hash(refImgSrc);
+}
+
+function getWebGLInfo() {
+  const gl = document.createElement("canvas").getContext("webgl");
+  // try to get the extensions
+  const ext = gl.getExtension("WEBGL_debug_renderer_info");
+
+  // if the extension exists, find out the info.
+  if (ext) {
+   	webglVendor = gl.getParameter(ext.UNMASKED_VENDOR_WEBGL);
+		webglRenderer = gl.getParameter(ext.UNMASKED_RENDERER_WEBGL);
+  }
+
+	document.getElementById("webglVendor").innerHTML = webglVendor || "NIL";
+	document.getElementById("webglRenderer").innerHTML = webglRenderer || "NIL";
 }
