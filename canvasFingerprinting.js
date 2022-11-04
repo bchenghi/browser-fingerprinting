@@ -63,6 +63,7 @@ function getCanvasFingerprint() {
 }
 
 function getWebGLInfo() {
+	// ATTRIBUTION: https://stackoverflow.com/questions/23769780/how-to-get-opengl-version-using-javascript
   const gl = document.createElement("canvas").getContext("webgl");
   // try to get the extensions
   const ext = gl.getExtension("WEBGL_debug_renderer_info");
