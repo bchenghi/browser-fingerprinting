@@ -18,7 +18,7 @@ async function fingerprintBrowser() {
   await getAvailableFonts();
   getTimeZone();
   getCanvasFingerprint();
-	getWebGLInfo();
+  getWebGLInfo();
   await getFingerprintHash();
 }
 

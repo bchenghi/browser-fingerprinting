@@ -63,17 +63,17 @@ function getCanvasFingerprint() {
 }
 
 function getWebGLInfo() {
-	// ATTRIBUTION: https://stackoverflow.com/questions/23769780/how-to-get-opengl-version-using-javascript
+  // ATTRIBUTION: https://stackoverflow.com/questions/23769780/how-to-get-opengl-version-using-javascript
   const gl = document.createElement("canvas").getContext("webgl");
   // try to get the extensions
   const ext = gl.getExtension("WEBGL_debug_renderer_info");
 
   // if the extension exists, find out the info.
   if (ext) {
-   	webglVendor = gl.getParameter(ext.UNMASKED_VENDOR_WEBGL);
-		webglRenderer = gl.getParameter(ext.UNMASKED_RENDERER_WEBGL);
+    webglVendor = gl.getParameter(ext.UNMASKED_VENDOR_WEBGL);
+    webglRenderer = gl.getParameter(ext.UNMASKED_RENDERER_WEBGL);
   }
 
-	document.getElementById("webglVendor").innerHTML = webglVendor || "NIL";
-	document.getElementById("webglRenderer").innerHTML = webglRenderer || "NIL";
+  document.getElementById("webglVendor").innerHTML = webglVendor || "NIL";
+  document.getElementById("webglRenderer").innerHTML = webglRenderer || "NIL";
 }
