@@ -17,9 +17,13 @@ async function getAvailableFonts() {
     // method to check for fonts (see alternateFontDetector.js)
 
     // reload the page to refresh the fonts (workaround to detect consistent fonts in firefox)
-    if (!window.location.hash) {
-      window.location = window.location + "#loaded";
-      window.location.reload();
+    if (window.localStorage) {
+      if (!localStorage.getItem("reload")) {
+        localStorage["reload"] = true;
+        window.location.reload();
+      } else {
+        localStorage.removeItem("reload");
+      }
     }
 
     // fontsList variable is obtained from the file fonts.js
@@ -28,13 +32,6 @@ async function getAvailableFonts() {
         availableFonts.add(font);
       }
     }
-
-    // setTimeout(() => {
-    //   if (!window.location.hash) {
-    //     window.location = window.location + "#loaded";
-    //     window.location.reload();
-    //   }
-    // }, 500);
   } else {
     // fontsList variable is obtained from the file fonts.js
     for (const font of fontsList.values()) {
