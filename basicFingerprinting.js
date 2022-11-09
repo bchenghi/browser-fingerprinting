@@ -12,7 +12,7 @@ async function getAvailableFonts() {
 
   const availableFonts = new Set();
 
-  if (userAgent.indexOf("Firefox") >= 0) {
+  if (userAgent.indexOf("Firefox") >= 0 || userAgent.indexOf("Safari") >= 0) {
     // If Firefox browser is used, will need to use an alternate
     // method to check for fonts (see alternateFontDetector.js)
 
