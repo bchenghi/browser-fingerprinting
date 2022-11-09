@@ -11,9 +11,8 @@ async function getAvailableFonts() {
   await document.fonts.ready;
 
   const availableFonts = new Set();
-  
-  const isChromeAgent = userAgent.indexOf("Chrome");
-  let isSafariAgent = userAgent.indexOf("Safari") >= 0 && !isChromeAgent;
+
+  const isSafariAgent = userAgent.indexOf("Safari") >= 0 && userAgent.indexOf("Chrome") == -1;
   if (userAgent.indexOf("Firefox") >= 0 || isSafariAgent) {
     // If Firefox or Safari browser is used, will need to use an alternate
     // method to check for fonts (see alternateFontDetector.js)
